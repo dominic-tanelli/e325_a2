@@ -126,17 +126,14 @@ print(action_stage_earliest_date)
 print(flood_stage_earliest_date)
 print(moderate_stage_earliest_date)
 print(major_stage_earliest_date)
-
 cat("\nQuestion 2 Answer (Withlacoochee River Flood Category Change in Hours): \n")
 difftime(flood_stage_earliest_date$datetime[1], action_stage_earliest_date$datetime[1]) # Withlacoochee River Action to Flood
 difftime(moderate_stage_earliest_date$datetime[1], flood_stage_earliest_date$datetime[1]) # Withlacoochee River Flood to Moderate
 difftime(major_stage_earliest_date$datetime[1], moderate_stage_earliest_date$datetime[1]) # Withlacoochee River Moderate to Major
-
 cat("\nQuestion 2 Answer (Fisheating Creek Flood Category Change in Hours): \n")
 difftime(flood_stage_earliest_date$datetime[2], action_stage_earliest_date$datetime[2]) # Fisheating Creek Action to Flood
 difftime(moderate_stage_earliest_date$datetime[2], flood_stage_earliest_date$datetime[2]) # Fisheating Creek Flood to Moderate
 difftime(major_stage_earliest_date$datetime[2], moderate_stage_earliest_date$datetime[2]) # Fisheating Creek Moderate to Major
-
 cat("\nQuestion 2 Answer (Peace River Flood Category Change in Hours): \n")
 difftime(flood_stage_earliest_date$datetime[3], action_stage_earliest_date$datetime[3]) # Peace River Action to Flood
 difftime(moderate_stage_earliest_date$datetime[3], flood_stage_earliest_date$datetime[3]) # Peace River Flood to Moderate
