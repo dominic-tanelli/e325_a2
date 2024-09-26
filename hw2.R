@@ -42,11 +42,32 @@ print(flood_stage_earliest_date)
 
 # Homework Part II
 # Question 1
+# fisheating_creek data frame set-up
 fisheating_creek <- floods %>%
   filter(siteID == 2256500) %>%
   select(gheight.ft, datetime)
 fisheating_creek$datetime <- as.POSIXct(fisheating_creek$datetime)
 
+# peace_river data frame set-up
+peace_river <- floods %>%
+  filter(siteID == 2295637) %>%
+  select(gheight.ft, datetime)
+peace_river$datetime <- as.POSIXct(peace_river$datetime)
+
+# santa_fe_river data frame set-up
+santa_fe_river <- floods %>%
+  filter(siteID == 2322500) %>%
+  select(gheight.ft, datetime)
+santa_fe_river$datetime <- as.POSIXct(santa_fe_river$datetime)
+
+# withlacoochee_river data frame set-up
+withlacoochee_river <- floods %>%
+  filter(siteID == 2312000) %>%
+  select(gheight.ft, datetime)
+withlacoochee_river$datetime <- as.POSIXct(withlacoochee_river$datetime)
+
+cat("\nQuestion 1 Answer: \n")
+# fisheating_creek plot
 ggplot(fisheating_creek, aes(x = datetime, y = gheight.ft)) +
   geom_line(color = "green") +  
   labs(title = "Fisheating Creek Stream Stage Over Time",
@@ -54,11 +75,7 @@ ggplot(fisheating_creek, aes(x = datetime, y = gheight.ft)) +
        y = "Stream Stage (ft)") +
   theme_minimal()
 
-peace_river <- floods %>%
-  filter(siteID == 2295637) %>%
-  select(gheight.ft, datetime)
-peace_river$datetime <- as.POSIXct(peace_river$datetime)
-
+# peace_river plot
 ggplot(peace_river, aes(x = datetime, y = gheight.ft)) +
   geom_line(color = "blue") +  
   labs(title = "Peace River Stream Stage Over Time",
@@ -66,11 +83,7 @@ ggplot(peace_river, aes(x = datetime, y = gheight.ft)) +
        y = "Stream Stage (ft)") +
   theme_minimal()
 
-santa_fe_river <- floods %>%
-  filter(siteID == 2322500) %>%
-  select(gheight.ft, datetime)
-santa_fe_river$datetime <- as.POSIXct(santa_fe_river$datetime)
-
+# santa_fe_river plot
 ggplot(santa_fe_river, aes(x = datetime, y = gheight.ft)) +
   geom_line(color = "chocolate") +  
   labs(title = "Santa Fe River Stream Stage Over Time",
@@ -78,11 +91,7 @@ ggplot(santa_fe_river, aes(x = datetime, y = gheight.ft)) +
        y = "Stream Stage (ft)") +
   theme_minimal()
 
-withlacoochee_river <- floods %>%
-  filter(siteID == 2312000) %>%
-  select(gheight.ft, datetime)
-withlacoochee_river$datetime <- as.POSIXct(withlacoochee_river$datetime)
-
+# withlacoochee_river plot
 ggplot(withlacoochee_river, aes(x = datetime, y = gheight.ft)) +
   geom_line(color = "aquamarine") +  
   labs(title = "Withlacoochee River Stream Stage Over Time",
@@ -91,30 +100,41 @@ ggplot(withlacoochee_river, aes(x = datetime, y = gheight.ft)) +
   theme_minimal()
 
 # Question 2
+# Action Stage Earliest Date
 action_stage_earliest_date <- floods %>%
   group_by(names) %>%
   filter(gheight.ft >= action.ft) %>%
   slice_min(order_by = datetime, with_ties = FALSE) %>%
   select(names, datetime)
-print(action_stage_earliest_date)
 
-print(flood_stage_earliest_date)
-
+# Moderate Stage Earliest Date
 moderate_stage_earliest_date <- floods %>%
   group_by(names) %>%
   filter(gheight.ft >= moderate.ft) %>%
   slice_min(order_by = datetime, with_ties = FALSE) %>%
   select(names, datetime)
-print(moderate_stage_earliest_date)
 
+# Major Stage Earliest Date
 major_stage_earliest_date <- floods %>%
   group_by(names) %>%
   filter(gheight.ft >= major.ft) %>%
   slice_min(order_by = datetime, with_ties = FALSE) %>%
   select(names, datetime)
+
+cat("\nQuestion 2 Answer: \n")
+print(action_stage_earliest_date)
+print(flood_stage_earliest_date)
+print(moderate_stage_earliest_date)
 print(major_stage_earliest_date)
 
 # Question 3
+major_stage <- floods %>%
+  group_by(names) %>%
+  filter(gheight.ft >= major.ft) %>%
+  slice_max(order_by = gheight.ft, with_ties = FALSE) %>%
+  select(names, gheight.ft)
+cat("\nQuestion 3 Answer: \n")
+print(major_stage)
 
 # Question 4
 cat("\nQuestion 4 Answer: See Word PDF")
