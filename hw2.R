@@ -91,7 +91,30 @@ ggplot(withlacoochee_river, aes(x = datetime, y = gheight.ft)) +
   theme_minimal()
 
 # Question 2
+action_stage_earliest_date <- floods %>%
+  group_by(names) %>%
+  filter(gheight.ft >= action.ft) %>%
+  slice_min(order_by = datetime, with_ties = FALSE) %>%
+  select(names, datetime)
+print(action_stage_earliest_date)
+
+print(flood_stage_earliest_date)
+
+moderate_stage_earliest_date <- floods %>%
+  group_by(names) %>%
+  filter(gheight.ft >= moderate.ft) %>%
+  slice_min(order_by = datetime, with_ties = FALSE) %>%
+  select(names, datetime)
+print(moderate_stage_earliest_date)
+
+major_stage_earliest_date <- floods %>%
+  group_by(names) %>%
+  filter(gheight.ft >= major.ft) %>%
+  slice_min(order_by = datetime, with_ties = FALSE) %>%
+  select(names, datetime)
+print(major_stage_earliest_date)
 
 # Question 3
 
 # Question 4
+cat("\nQuestion 4 Answer: See Word PDF")
