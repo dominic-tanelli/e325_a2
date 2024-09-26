@@ -46,25 +46,25 @@ print(flood_stage_earliest_date)
 fisheating_creek <- floods %>%
   filter(siteID == 2256500) %>%
   select(gheight.ft, datetime)
-fisheating_creek$datetime <- as.POSIXct(fisheating_creek$datetime)
+fisheating_creek$datetime <- ymd_hm(fisheating_creek$datetime)
 
 # peace_river data frame set-up
 peace_river <- floods %>%
   filter(siteID == 2295637) %>%
   select(gheight.ft, datetime)
-peace_river$datetime <- as.POSIXct(peace_river$datetime)
+peace_river$datetime <- ymd_hm(peace_river$datetime)
 
 # santa_fe_river data frame set-up
 santa_fe_river <- floods %>%
   filter(siteID == 2322500) %>%
   select(gheight.ft, datetime)
-santa_fe_river$datetime <- as.POSIXct(santa_fe_river$datetime)
+santa_fe_river$datetime <- ymd_hm(santa_fe_river$datetime)
 
 # withlacoochee_river data frame set-up
 withlacoochee_river <- floods %>%
   filter(siteID == 2312000) %>%
   select(gheight.ft, datetime)
-withlacoochee_river$datetime <- as.POSIXct(withlacoochee_river$datetime)
+withlacoochee_river$datetime <- ymd_hm(withlacoochee_river$datetime)
 
 cat("\nQuestion 1 Answer: \n")
 # fisheating_creek plot
